@@ -1,16 +1,106 @@
-# React + Vite
+# 📝 Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and responsive **Todo App** built using **React.js** that allows users to manage daily tasks efficiently.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* ➕ Add new tasks
+* 🗑️ Delete tasks
+* 📋 View all tasks in a list
+* 💾 Persistent storage using localStorage
+* ⚡ Instant UI updates with React state
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend:** React.js
+* **Styling:** Tailwind CSS
+* **State Management:** React Hooks (`useState`, `useEffect`)
+* **Storage:** Local Storage
+
+---
+
+## 📂 Project Structure
+
+```
+TodoApp/
+│── public/
+│── src/
+│   ├── App.jsx
+│   ├── main.jsx
+│── package.json
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+1. Clone the repository
+
+```
+git clone https://github.com/your-username/todo-app.git
+```
+
+2. Navigate into the project folder
+
+```
+cd todo-app
+```
+
+3. Install dependencies
+
+```
+npm install
+```
+
+4. Run the app
+
+```
+npm run dev
+```
+
+---
+
+## 💡 How It Works
+
+* Users can add tasks using an input field
+* Tasks are stored in **localStorage**
+* On page reload, tasks are retrieved and displayed
+* React updates the UI dynamically when tasks change
+
+---
+
+## 📸 Screenshots
+
+*Add screenshots of your app here*
+
+---
+
+## 🔧 Future Improvements
+
+* ✏️ Edit tasks
+* ✅ Mark tasks as completed
+* 📅 Add due dates
+* 🌙 Dark mode support
+
+---
+
+## 🤝 Contributing
+
+Feel free to fork this project and improve it!
+
+---
+
+## 📜 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Your Name**
+GitHub: https://github.com/your-username
