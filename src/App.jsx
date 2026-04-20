@@ -38,7 +38,12 @@ setTask('');
 key={index}
  className=' font-medium flex items-center justify-between gap-20 bg-gray-100 px-10 py-5 rounded-xl'
  >{t}
- <button 
+ <button
+ onClick={()=>{
+  const copy = [...tasks]
+  copy.splice(index,1)
+  setTasks(copy);
+ }} 
  className='bg-green-500 px-3  rounded-2xl font-semibold'>
   Delete
   </button></li>
