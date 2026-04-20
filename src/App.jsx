@@ -1,10 +1,20 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect  } from 'react'
 
 
 const App = () => {
+
 const [task, setTask] = useState('')
-const [tasks, setTasks] = useState([])
+const [tasks, setTasks] = useState(()=>{
+  const saved = localStorage.getItem("tasks")
+  return saved ? JSON.parse(saved):[]
+})
+
+useEffect(() => {
+  localStorage.setItem('tasks',JSON.stringify(tasks))
+}, [tasks])
+
+
 
 const submitHandler =(e)=> {
 e.preventDefault()
