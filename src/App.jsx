@@ -8,6 +8,7 @@ const [tasks, setTasks] = useState([])
 
 const submitHandler =(e)=> {
 e.preventDefault()
+if (task.trim()=== '') return
 setTasks([...tasks,task])
 setTask('');
 }
