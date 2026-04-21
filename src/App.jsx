@@ -1,79 +1,86 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-
+import React, { useState, useEffect } from "react";
 
 const App = () => {
-
-  const [task, setTask] = useState('')
+ 
+  const [task, setTask] = useState("");
   const [tasks, setTasks] = useState(() => {
-    const saved = localStorage.getItem("tasks")
-    return saved ? JSON.parse(saved) : []
-  })   
+    const saved = localStorage.getItem("tasks");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-  }, [tasks])
-  const [editTask, setEditTask] = useState(null)
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
  
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    if (task.trim() === "") {
+      alert("Write tasks");
+      return;
+    }
 
-  const submitHandler = (e) => {
-    e.preventDefault()
-    if (task.trim() === '') return alert("Write tasks")
-    setTasks([...tasks, task])
-    setTask('');
-  }
+    setTasks([...tasks, task]);
+    setTask("");
+  };
+
+  const handleDelete = (index) => {
+    const updatedTasks = tasks.filter((_, i) => i !== index);
+    setTasks(updatedTasks);
+  };
+
   return (
-    <div>
+    <div className="p-6">
+     
       <form
-        onSubmit={submitHandler}
-        className='flex flex-col items-center gap-5 '>
-        <label className='font-bold text-5xl'>Todo</label>
-        <div className='flex gap-5'>
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center gap-5"
+      >
+        <h1 className="text-5xl font-bold">Todo</h1>
+
+        <div className="flex gap-5">
           <input
+            type="text"
             value={task}
-            onChange={(e) =>
-              setTask(e.target.value)}
-            type="text" className='bg-blue-500 w-66 h-10 rounded-xl px-4'
-            placeholder='Add the new task' />
+            onChange={(e) => setTask(e.target.value)}
+            placeholder="Add new task"
+            className="bg-blue-500 w-64 h-10 rounded-xl px-4 text-white placeholder-white"
+          />
+
           <button
-            className=' cursor-pointer px-4 bg-blue-300 rounded-xl text-xl '>
-            Add</button>
+            type="submit"
+            className="px-4 bg-blue-300 rounded-xl text-xl cursor-pointer"
+          >
+            Add
+          </button>
         </div>
       </form>
-      <div className='flex flex-col items-start ml-20  mt-10 '>
-        <h1 className='font-semibold text-6xl mb-6 underline'>Tasks</h1>
 
 
-        <ul className='flex flex-wrap gap-5 ' >
+      <div className="mt-10">
+        <h2 className="text-4xl font-semibold mb-6 underline">Tasks</h2>
+
+        <ul className="flex flex-wrap gap-5">
           {tasks.map((t, index) => (
             <li
               key={index}
-              className=' font-medium flex items-center justify-between gap-20
-               bg-gray-100 px-6 py-5 rounded-xl'
-            >{t}
-           <div className='flex items-center justify-between gap-2'>
-             <button className='bg-green-500 px-3  rounded-2xl font-semibold'
-              >
-              Edit
-            </button>
+              className="flex items-center justify-between gap-10 bg-gray-100 px-6 py-4 rounded-xl min-w-[250px]"
+            >
+              <span>{t}</span>
+
               <button
-                onClick={() => {
-                  const copy = [...tasks]
-                  copy.splice(index, 1)
-                  setTasks(copy);
-                }}
-                className='bg-green-500 px-3  rounded-2xl font-semibold'>
+                onClick={() => handleDelete(index)}
+                className="bg-red-500 text-white px-3 rounded-xl font-semibold"
+              >
                 Delete
               </button>
-            </div></li>
+            </li>
           ))}
-
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
-
+export default App;
